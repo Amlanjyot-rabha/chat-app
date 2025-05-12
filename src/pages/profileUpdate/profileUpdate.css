@@ -1,0 +1,43 @@
+ .container{
+    color: black !important;
+    background-color: cadetblue;
+    margin: auto auto;
+    width: 40%;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    margin-top: 40vh;
+    padding: 20px 0px;
+ }
+ .container textarea,input{
+   color: black;
+ }
+ .left{
+    display: flex;
+    flex-direction: column;
+    border-radius:20px;
+    padding: 30px 0px;
+    align-items: center;
+    gap: 10px;
+ }
+ .left button{
+   width: 60px;
+   background-color: rgb(9, 156, 255);
+ }
+ .left img{
+   border-radius: 50%;
+   margin:  auto;
+   width: 60px;
+   height: 60px;
+ }
+ .right{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ }
+ .right img{
+  /* border-radius:20px; */
+   margin:  auto;
+   width: 150px;
+   height: 150px;
+ }
+  

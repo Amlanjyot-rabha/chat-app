@@ -1,0 +1,114 @@
+.chat-box{
+        width: 100%;
+        color: black !important;
+        background-image: url('../../assets/background.jpg');
+        fill-opacity:0.5;
+}
+
+.chat-user{
+    background-color: rgb(56, 56, 56);
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    gap: 10px;
+    align-items: center;
+    padding: 10px 20px;
+    
+}
+.chat-user p{
+    color: rgb(255, 255, 255);
+    font-size: 2rem;
+}
+.chat-user .profile{
+    border-radius: 50%;
+    width: max(4vw);
+   
+    color: black;
+}
+.chat-user .help{
+    width: max(2vw);
+}
+
+
+.chat-input{
+    justify-content:center;
+    background-color: rgb(56, 56, 56);
+    gap: 15px;
+    width: 70%;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 0px;
+    padding: 15px 0px;
+}
+
+.chat-input input[type="text"]{
+    height:30px;
+  width: 50%;
+  background-color: rgb(110, 110, 110);
+  outline: none;
+  border: none;
+  color: white;
+  padding: 8px 10px;
+  border-radius: 10px;
+}
+.chat-input img{
+    width: max(20px,2.5vw);
+}
+
+
+.chat-msg{
+    height: 80vh;
+    color: black;
+}
+.chat-msg p{
+    color: black;
+}
+ .chat-msg div img{
+  width: 40px;
+  border-radius: 50%;
+}
+
+.s-msg,.r-msg{
+    display: flex;
+    justify-content: end;
+    padding: 8px 10px;
+    align-items: center;
+    flex-direction: row
+     
+}
+.s-msg{
+    justify-content: start;
+    flex-direction: row-reverse;
+     
+     
+}
+
+.msg{
+  background-color: rgb(49, 159, 255);
+  width: fit-content;
+  max-width:30vw;  
+  border-radius: 10px 10px 10px 0px;
+  padding: 8px 10px ;
+ 
+}
+.r-msg>.msg{
+    /* display: none; */
+    border-radius: 10px 10px 0px 10px;
+    
+}
+
+.sending-image {
+    /* border: 1px solid red; */
+    width: 200px !important;
+    border-radius: 10px !important;
+}
+
+/* video left 1.20 */
+
+
+@media(max-width:750px){
+    .chat-box{
+        display: none;
+    }
+}

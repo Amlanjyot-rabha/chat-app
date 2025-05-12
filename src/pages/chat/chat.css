@@ -1,0 +1,16 @@
+ .chat-container{
+   width: 100vw;
+ 
+  /* border: 1px solid red; */
+  display: grid;
+  grid-template-columns: 30% 70%;
+ }
+ @media(max-width:750px){
+  .chat-container{
+    /* width: 100vw; */
+  
+   /* border: 1px solid red; */
+   display: grid;
+   grid-template-columns:100%;
+  }
+ }

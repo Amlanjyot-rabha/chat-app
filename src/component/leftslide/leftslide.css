@@ -1,0 +1,87 @@
+ .wrapper{
+    background-color: rgb(64, 64, 64);
+    width: 100%;
+    color: white;
+ }
+ 
+ .left-nav-top{
+    display: flex;
+    flex-direction: row;
+    padding: 8px 10px;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    overflow: visible;
+ }
+ .logo img{
+     width: max(150px,10.5vw);
+     
+ }
+ .menu img{
+    width: max(20px,2.5vw);
+ }
+ .left-search{
+    margin: auto;
+    width: 90%;
+    background-color: rgb(41, 41, 41);
+    border-radius:5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 8px 10px;
+ }
+ 
+ .left-search img{
+    width: max(1.5vw);
+ }
+ .left-search input{
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color: white !important;
+}
+ .left-contacts{
+   
+   height: 85vh;
+   overflow-x:hidden;
+   overflow-y: scroll;
+ }
+ 
+.contact-list{
+    display: flex;
+    color: white;
+    flex-direction: row;
+    padding: 8px 10px;
+    gap: 10px;
+    border-bottom: 1px solid black;
+    width: 80%;
+    margin: auto;
+}
+.contact-list img{
+    width: max(15px,2.5vw);
+    border-radius: 20px;
+}
+ 
+.left-nav-top > .menu-items{
+   display: none;
+   position: absolute;
+   padding: 10px 10px;
+   top: 50px;
+   right: 15px;
+   cursor: pointer;
+   background-color: antiquewhite;
+   border-radius: 5px;
+ 
+}
+.left-nav-top > .menu-items p:hover{
+   text-decoration: underline;
+}
+.left-nav-top > .menu-items p{
+   color: black;
+}
+.menu-items:hover{
+   display: block;
+}
+.menu:hover + .menu-items {
+   display: block;
+}
