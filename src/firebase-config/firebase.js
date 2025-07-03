@@ -1,8 +1,7 @@
- 
- import {createUserWithEmailAndPassword,getAuth, signInWithEmailAndPassword, signOut} from   "firebase/auth"
- import{doc, getFirestore, setDoc} from "firebase/firestore"
- import { toast } from "react-toastify";
- import { initializeApp } from "firebase/app";
+import {createUserWithEmailAndPassword,getAuth, signInWithEmailAndPassword, signOut} from   "firebase/auth"
+import{doc, getFirestore, setDoc} from "firebase/firestore"
+import { toast } from "react-toastify";
+import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
  
 const firebaseConfig = {
@@ -15,61 +14,58 @@ const firebaseConfig = {
   measurementId: "G-XH246EEQZX"
 };
 
- 
- 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const auth=getAuth(app)
-const db =getFirestore(app)
+const auth = getAuth(app)
+const db = getFirestore(app)
 
-const signup = async ( email,userName, password) => {
+const signup = async (email, userName, password) => {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user; 
 
+    // Create user document
     await setDoc(doc(db, "users", user.uid), {
       id: user.uid,
       userName: userName.toLowerCase(),
-      email:'',
-      name: "",
-      avatar: " ",
-      bio: "Hi there, I'm not using WhatsApp",
+      email: email,
+      name: userName,
+      avatar: "",
+      bio: "Hey there! I'm using the chat app",
+      lastSeen: Date.now()
     });
     
+    // Create chat document with empty chatData array
     await setDoc(doc(db, "chats", user.uid), {
-      chatData: ["dsfs"],
-      lastSeen:''
+      chatData: []
     });
+
+    toast.success("Account created successfully!");
    
   } catch (error) {
-    console.log("Error in DB:", error);
+    console.error("Error in signup:", error);
     toast.error(error.code);
   }
 };
  
-const login=async (email,password)=>{
-
+const login = async (email, password) => {
   try {
-    await signInWithEmailAndPassword(auth,email,password)
-    alert('login succesfully')
-   
-    
+    await signInWithEmailAndPassword(auth, email, password)
+    toast.success("Logged in successfully!")
   } catch (error) {
-    console.log('error in login')
+    console.error("Error in login:", error)
     toast.error(error.code)
-   
   }
-   
 }
 
-
-const signout=async()=>{
+const signout = async () => {
   try {
     await signOut(auth)
+    toast.success("Logged out successfully!")
   } catch (error) {
-    console.log('error in signout')
+    console.error("Error in signout:", error)
+    toast.error("Failed to logout")
   }
-  
 }
 
-export {signup,login,signout,auth,db}
+export {signup, login, signout, auth, db}

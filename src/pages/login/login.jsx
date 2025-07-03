@@ -1,58 +1,76 @@
 import "./login.css"
 import assets from "../../assets/assets.js"
 import { useState } from "react"
-import {signup,login} from '../../firebase-config/firebase.js'
-import { useEffect } from "react"
-const Login=()=>{
-   const [signIn,setSignIn]=useState('login')
-   const [email,setEmail]=useState('')
-   const [userName,setUserName]=useState("")
-   const [password,setPassword]=useState('')
+import { signup, login } from '../../firebase-config/firebase.js'
 
-   const userHandeler=(event)=>{
-      event.preventDefault();
-      if(signIn==='signin'){
-      signup(email,userName,password)
-      console.log(email,userName,password)
-      console.log(signIn)
-   }else{
-       login(email,password)
-   } 
-   }
+const Login = () => {
+  const [isLogin, setIsLogin] = useState(true)
+  const [email, setEmail] = useState('')
+  const [userName, setUserName] = useState("")
+  const [password, setPassword] = useState('')
 
-   useEffect(()=>{
-      console.log(signIn)
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    if (!isLogin && !userName.trim()) {
+      alert('Please enter a username')
+      return
+    }
+    if (!email.trim() || !password.trim()) {
+      alert('Please fill in all fields')
+      return
+    }
 
-  },userHandeler)
-   return(
-    <>
-   <div className="log-in-form">
-      <div className="form-img">
-         <img src={assets.log_in}/>
+    if (isLogin) {
+      await login(email, password)
+    } else {
+      await signup(email, userName, password)
+    }
+  }
+
+  return (
+    <div className="log-in-form">
+      <div className="form-container">
+        <div className="form-img">
+          <img src={assets.log_in} alt="Login background" />
+        </div>
+        <div className="form-input">
+          <h2>{isLogin ? 'Welcome Back' : 'Create Account'}</h2>
+          <form className="form" onSubmit={handleSubmit}>
+            {!isLogin && (
+              <input
+                type="text"
+                value={userName}
+                onChange={(e) => setUserName(e.target.value)}
+                placeholder="Username"
+              />
+            )}
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email"
+            />
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+            />
+            <button type="submit">
+              {isLogin ? 'Login' : 'Sign Up'}
+            </button>
+            <p>
+              {isLogin ? "Don't have an account?" : "Already have an account?"}
+              <br />
+              <span onClick={() => setIsLogin(!isLogin)}>
+                {isLogin ? 'Create one' : 'Login here'}
+              </span>
+            </p>
+          </form>
+        </div>
       </div>
-      <div className="form-input">
-         <h2>{signIn}</h2>
-      <form className="form"  onSubmit={userHandeler} >
-                {signIn==='login'?<></>:<input type="text" value={userName} onChange={(e)=>setUserName(e.target.value)} placeholder="user name.."/>}
-                <input type="email" value={email}  onChange={(e)=>setEmail(e.target.value)} placeholder="email.."/>
-                 <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} placeholder="passwrod.."/>
-            
-             {signIn==="login"?
-             <>
-             <p>Don't have account</p>
-             <span onClick={()=>setSignIn('signin')}>Login</span>
-             </>:
-              <>
-              <p>Alredy have a account?</p>
-              <span onClick={()=>setSignIn('login')}>Sign-in</span>
-              </>}
-            <button type="submit">{signIn}</button>
-        </form>
-      </div>
-    
-   </div>
-    </>
-
-   )
+    </div>
+  )
 }
-export default  Login
+
+export default Login

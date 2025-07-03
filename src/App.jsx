@@ -20,9 +20,9 @@ const  App=()=>{
   useEffect(()=>{
      onAuthStateChanged(auth,async (user)=>{
       if (user) {
+        await loadUserData(user.uid)
         navigate('/chat')
-         await loadUserData(user.uid)
-        
+          
       } else {
         navigate('/')
       }
@@ -38,8 +38,6 @@ const  App=()=>{
               <Route path={'/profile'} element={<Profile/>}/>
               <Route path={'/updateprofile'} element={<ProfileUpdate/>}/>
             </Routes>
-           
-           
     </>
    )
     

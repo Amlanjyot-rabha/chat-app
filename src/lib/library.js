@@ -1,10 +1,16 @@
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-const upload=(file)=>{
+
+const upload = (file) => {
+  return new Promise((resolve, reject) => {
+    if (!file) {
+      reject(new Error('No file provided'));
+      return;
+    }
+
     const storage = getStorage();
-    const storageRef = ref(storage, `image/${Date.now()+ file.name}`);
+    const storageRef = ref(storage, `images/${Date.now()}_${file.name}`);
     const uploadTask = uploadBytesResumable(storageRef, file);
     
-     
     uploadTask.on('state_changed', 
       (snapshot) => {
         const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
@@ -19,15 +25,20 @@ const upload=(file)=>{
         }
       }, 
       (error) => {
-       
+        console.error('Upload error:', error);
+        reject(error);
       }, 
-      () => {
-        
-        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-           resolve(downloadURL)
-        });
+      async () => {
+        try {
+          const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+          resolve(downloadURL);
+        } catch (error) {
+          console.error('Error getting download URL:', error);
+          reject(error);
+        }
       }
     );
+  });
 }
- 
-export default upload
+
+export default upload;
