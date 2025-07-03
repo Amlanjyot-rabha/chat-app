@@ -3,7 +3,7 @@ import assets from "../../assets/assets.js"
 import { onAuthStateChanged} from 'firebase/auth'
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import {auth,db} from '../../firebase-config/firebase.js'
-import './ProfileUpdate.css'
+import './profileUpdate.css'
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import upload from "../../lib/uploadService.js"
