@@ -1,0 +1,251 @@
+.wrapper {
+  display: none;
+  height: 100vh;
+  background-color: rgb(40, 40, 40);
+  display: flex;
+  flex-direction: column;
+}
+
+.left-nav-top {
+  /* border: 1px solid red; */
+  background-color: rgb(56, 56, 56);
+  /* padding: 10px 20px; */
+  /* position: relative; */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.left-nav-top img{
+  /* display: none; */
+  height: 30px;
+}
+.left-nav-top img:hover > setting{
+  display: none;
+}
+.setting{
+  /* display: none; */
+  background-color: rgb(40, 40, 40);
+  position: absolute;
+  top: 30px;
+  left: 26%;
+  padding: 20px 10px;
+  gap: 10px;
+}
+
+.logo {
+  padding: 0px 20px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.logo img {
+   width: 80px;
+   height: 30px;
+}
+
+.user-name {
+  color: white;
+  font-size: 1.2rem;
+}
+
+ .menu { 
+  background-color: transparent;
+  display: none;
+  border: 1px solid red;
+ }
+
+ 
+ 
+
+
+.left-search {
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: rgb(56, 56, 56);
+}
+
+.left-search img {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.left-search input {
+  flex: 1;
+  background-color: rgb(40, 40, 40);
+  border: none;
+  padding: 8px 15px;
+  border-radius: 20px;
+  color: white;
+  font-size: 14px;
+}
+
+.left-search input:focus {
+  outline: none;
+  background-color: rgb(45, 45, 45);
+}
+
+.left-contacts {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px 0;
+}
+
+.contact-list {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  position: relative;
+}
+
+.contact-list:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.contact-list.active {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.contact-list img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.contact-list div {
+  flex: 1;
+  min-width: 0;
+}
+
+.contact-list h4 {
+  margin: 0;
+  font-size: 1rem;
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.contact-list span {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+}
+
+.unread-indicator {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #0084ff !important;
+  font-size: 1.2rem !important;
+}
+
+/* Scrollbar styling */
+.left-contacts::-webkit-scrollbar {
+  width: 5px;
+}
+
+.left-contacts::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.left-contacts::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+}
+
+.left-contacts::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .wrapper {
+ 
+    width: 100%;
+    position: relative;
+  }
+
+  .chat-container {
+    display: flex;
+    height: 100vh;
+  }
+
+  .chat-box {
+    display: none;
+  }
+
+  .chat-box.active {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .wrapper.chat-open {
+    display: none;
+  }
+
+  .menu-items {
+  position: absolute;
+  right: 20px;
+  top: 100%;
+  background-color: rgb(56, 56, 56);
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  min-width: 150px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: none;
+}
+
+.menu-items.show {
+  display: block;
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.menu-items p {
+  color: white;
+  margin: 8px 0;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background-color 0.2s;
+  white-space: nowrap;
+  font-size: 14px;
+}
+
+.menu-items p:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.menu-items hr {
+  display: none;
+}
+
+.menu-items br {
+  display: none;
+}
+}
