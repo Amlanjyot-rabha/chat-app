@@ -4,7 +4,7 @@ A modern real-time chat application built with React, Firebase, and Node.js. Fea
 
 ## Features
 
-### 🚀 Core Features
+ Core Features
 - **Real-time Messaging**: Instant message delivery using Firebase
 - **User Authentication**: Secure login/signup with Firebase Auth
 - **File Sharing**: Send images, documents, and other files
@@ -13,7 +13,7 @@ A modern real-time chat application built with React, Firebase, and Node.js. Fea
 - **Search Users**: Find and start conversations with other users
 - **Online Status**: See when users are online or last seen
 
-### 📁 File Upload Support
+ File Upload Support
 - **Images**: JPEG, JPG, PNG, GIF, WebP
 - **Documents**: PDF, DOC, DOCX, XLS, XLSX, TXT
 - **Archives**: ZIP, RAR
@@ -34,14 +34,9 @@ A modern real-time chat application built with React, Firebase, and Node.js. Fea
 - **Vite**: Fast build tool and dev server
 - **Firebase**: Authentication, Firestore database, and storage
 - **React Router**: Client-side routing
-- **React Toastify**: Toast notifications
 - **CSS3**: Modern styling with flexbox and grid
 
-### Backend (Optional)
-- **Node.js**: Server runtime
-- **Express**: Web framework
-- **Multer**: File upload middleware
-- **CORS**: Cross-origin resource sharing
+
 
 ## Project Structure
 
@@ -109,32 +104,9 @@ npm run dev
 # Frontend (from frontend directory)
 npm run dev
 
-# Backend (from backend directory, if using)
-npm run dev
-```
 
-## Configuration
 
-### File Upload Service
-The application supports two file upload services:
 
-1. **Firebase Storage** (Default)
-   - Edit `frontend/src/lib/uploadService.js`
-   - Set `UPLOAD_SERVICE = 'firebase'`
-
-2. **Multer Backend**
-   - Edit `frontend/src/lib/uploadService.js`
-   - Set `UPLOAD_SERVICE = 'multer'`
-   - Update `MULTER_BASE_URL` to your backend URL
-
-### Environment Variables
-Create a `.env` file in the backend directory:
-```env
-PORT=5000
-CLOUDINARY_CLOUD_NAME=your_cloud_name
-CLOUDINARY_API_KEY=your_api_key
-CLOUDINARY_API_SECRET=your_api_secret
-```
 
 ## Usage
 
